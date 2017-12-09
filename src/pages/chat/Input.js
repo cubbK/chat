@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Input } from 'semantic-ui-react'
+import { Input, Button } from 'semantic-ui-react'
 
 class InputMsg extends Component {
 
@@ -13,7 +13,7 @@ class InputMsg extends Component {
         <div> 
           <Input size='mini' placeholder='Name' /> 
         </div>
-        <Input size='large' action='Send' placeholder='Type msg' fluid onClick={this.onClick}/>
+        <Input size='large' action={<Button color='teal' icon='send' content='Send' onClick={ this.onClick } />} placeholder='Type msg' fluid/>
       </div>
     )
   }
