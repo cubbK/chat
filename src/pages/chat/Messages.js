@@ -3,10 +3,10 @@ import React, { Component } from 'react'
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { ALL_MSG_QUERY } from 'graphql/queries'
-import { ALL_MSG_SUBSCRIPTION } from 'graphql/subscriptions'
+// import { ALL_MSG_SUBSCRIPTION } from 'graphql/subscriptions'
 import { List, Image } from 'semantic-ui-react'
 
-@graphql(ALL_MSG_SUBSCRIPTION)
+@graphql(ALL_MSG_QUERY)
 class Messages extends Component {
   render() {
     const allMessages = this.props.data.allMessages

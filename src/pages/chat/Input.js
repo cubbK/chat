@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Input, Button } from 'semantic-ui-react'
 import { CREATE_MESSAGE } from 'graphql/mutations'
 import { graphql } from 'react-apollo'
+import styles from './Input.module.styl'
 
 @graphql(CREATE_MESSAGE, {name:'createMsg'})
 class InputMsg extends Component {
@@ -36,7 +37,7 @@ class InputMsg extends Component {
 
   render () {
     return (
-      <div>
+      <div className={styles.box}>
         <div> 
           <Input size='mini' placeholder='Name' onChange={this.handleNameChange} value={this.state.name} /> 
         </div>
