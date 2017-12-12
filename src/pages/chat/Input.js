@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Input, Button } from 'semantic-ui-react'
 import { CREATE_MESSAGE } from 'graphql/mutations'
+import { ALL_MSG_QUERY } from 'graphql/queries'
 import { graphql } from 'react-apollo'
 import styles from './Input.module.styl'
 
@@ -20,7 +21,20 @@ class InputMsg extends Component {
       variables: {
         name: this.state.name,
         message: this.state.msg
+      },
+      update: (proxy, { data: {createMessage} }) => {
+        // Read the data from our cache for this query.
+        const data = proxy.readQuery({ query: ALL_MSG_QUERY })
+        console.log('createMsg',createMessage)
+        // Add our todo from the mutation to the end.
+        data.allMessages.push(createMessage)
+
+        // Write our data back to the cache.
+        proxy.writeQuery({ query: ALL_MSG_QUERY, data })
       }
+    })
+    this.setState({
+      msg: ''
     })
   }
 
